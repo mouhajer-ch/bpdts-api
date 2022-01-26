@@ -1,0 +1,65 @@
+{
+    "swagger": "2.0",
+    "basePath": "/",
+    "info": {
+        "description": "bpdts API - Single Endpoint that return list of users who are either living in London, or whose current coordinates are within 50 miles of London.",
+        "version": "1.0.0",
+        "title": "Swagger BPDTS API"
+    },
+    "paths": {
+        "/api/users/london": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "List of users who are either living in London, or whose current coordinates are within 50 miles of London",
+                "operationId": "getUsers",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "ip_address": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "longitude": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        }
+    }
+}

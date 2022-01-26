@@ -1,0 +1,53 @@
+{
+  "name": "bpdts-api",
+  "version": "1.0.0",
+  "description": "List of users who are either living in London, or whose current coordinates are within 50 miles of London.",
+  "main": "dist/src/server.js",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "express": "^4.17.2",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/express": "^4.17.13",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^17.0.10",
+    "@types/sinon": "^10.0.8",
+    "@types/sinon-chai": "^3.2.8",
+    "@types/supertest": "^2.0.11",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "chai": "^4.3.4",
+    "eslint": "^8.7.0",
+    "husky": "^7.0.4",
+    "mocha": "^9.2.0",
+    "nyc": "^15.1.0",
+    "sinon": "^12.0.1",
+    "sinon-chai": "^3.7.0",
+    "supertest": "^6.2.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  },
+  "scripts": {
+    "start": "node dist/src/server.js",
+    "build": "NODE_ENV=production tsc",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "lint:fix": "eslint 'src/**/*.ts' 'test/**/*.ts' --fix",
+    "test": "mocha --require ts-node/register --project tsconfig.json './test/*.spec.ts' --timeout 10000 --exit",
+    "test:coverage": "nyc npm test"
+  },
+  "keywords": [
+    "api",
+    "rest"
+  ],
+  "author": "mouhajer-ch",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  }
+}
